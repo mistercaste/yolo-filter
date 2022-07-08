@@ -45,7 +45,7 @@ def get_outputs_names(net):
 
     # Get the names of the output layers, i.e. the layers with unconnected
     # outputs
-    return [layers_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+    return [(layers_names[i - 1], print(i))[0] for i in net.getUnconnectedOutLayers()]
 
 
 # Draw the predicted bounding box
