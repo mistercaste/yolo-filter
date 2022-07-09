@@ -40,11 +40,6 @@ There are many ways to install `virtual environment (virtualenv)`, see the [Pyth
 $ pip install virtualenv
 ```
 
-- For Mac
-```bash
-$ pip install --upgrade virtualenv
-```
-
 Create a Python 3.9 virtual environment for this project and activate the virtualenv:
 ```bash
 $ virtualenv -p python3.9 yolo-filter
@@ -67,17 +62,17 @@ $ git clone https://github.com/mistercaste/yolo-filter.git
 
 * Run the following command:
 
->**image input**
+>**IMAGE INPUT**
 ```bash
 $ python detect.py --image samples/interstellar.jpg
 ```
 
->**video input**
+>**VIDEO INPUT**
 ```bash
 $ python detect.py --video samples/subway.mp4
 ```
 
->**webcam**
+>**WEBCAM**
 ```bash
 $ python detect.py --src 1
 ```
@@ -92,3 +87,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## References
 
+This is a fork of [Yolo FACE](https://github.com/sthanhng/yoloface);
+however some features were added by other very similar projects on the internet and some -of course- by myself. As none of these projects referenced an original fork, which I suspect exists (maybe the original YOLO author, [Joseph Chet Redmon](https://pjreddie.com/)?), I've referenced YoloFACE with the purpose of continuing from the codebase of this project.
+Might you know which project is the original fork, please contact me: I will be more than happy to update my references. Thank you!
+
+- Matt
