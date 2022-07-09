@@ -1,18 +1,3 @@
-# *******************************************************************
-#
-# Author : Thanh Nguyen, 2018
-# Email  : sthanhng@gmail.com
-# Github : https://github.com/sthanhng
-#
-# BAP, AI Team
-# Face detection using the YOLOv3 algorithm
-#
-# Description : utils.py
-# This file contains the code of the parameters and help functions
-#
-# *******************************************************************
-
-
 import datetime
 import numpy as np
 import cv2
@@ -45,31 +30,33 @@ def get_outputs_names(net):
 
     # Get the names of the output layers, i.e. the layers with unconnected
     # outputs
-    return [layers_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+    return [(layers_names[i - 1], i)[0] for i in net.getUnconnectedOutLayers()]
 
 
 # Draw the predicted bounding box
-def draw_predict(frame, conf, left, top, right, bottom):
+def draw_predict(frame, conf, left, top, right, bottom, class_name):
     # Draw a bounding box.
     cv2.rectangle(frame, (left, top), (right, bottom), COLOR_YELLOW, 2)
 
-    text = '{:.2f}'.format(conf)
+    # The label for the class name and its confidence
+    label = '%s: %s' % (class_name, "{:.0%}".format(conf))
+    print(label)
 
     # Display the label at the top of the bounding box
-    label_size, base_line = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+    label_size, base_line = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
 
     top = max(top, label_size[1])
-    cv2.putText(frame, text, (left, top - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.4,
-                COLOR_WHITE, 1)
+    cv2.putText(frame, label, (left, top - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.4, COLOR_WHITE, 1)
 
 
-def post_process(frame, outs, conf_threshold, nms_threshold):
+def post_process(frame, outs, conf_threshold, nms_threshold, classes, excluded_classes_ids):
     frame_height = frame.shape[0]
     frame_width = frame.shape[1]
 
     # Scan through all the bounding boxes output from the network and keep only
     # the ones with high confidence scores. Assign the box's class label as the
     # class with the highest score.
+    class_ids = []
     confidences = []
     boxes = []
     final_boxes = []
@@ -85,16 +72,14 @@ def post_process(frame, outs, conf_threshold, nms_threshold):
                 height = int(detection[3] * frame_height)
                 left = int(center_x - width / 2)
                 top = int(center_y - height / 2)
+                class_ids.append(class_id)
                 confidences.append(float(confidence))
                 boxes.append([left, top, width, height])
 
-    # Perform non maximum suppression to eliminate redundant
-    # overlapping boxes with lower confidences.
-    indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold,
-                               nms_threshold)
+    # Perform non-maximum suppression to eliminate redundant overlapping boxes with lower confidences.
+    indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
 
     for i in indices:
-        i = i[0]
         box = boxes[i]
         left = box[0]
         top = box[1]
@@ -102,9 +87,8 @@ def post_process(frame, outs, conf_threshold, nms_threshold):
         height = box[3]
         final_boxes.append(box)
         left, top, right, bottom = refined_box(left, top, width, height)
-        # draw_predict(frame, confidences[i], left, top, left + width,
-        #              top + height)
-        draw_predict(frame, confidences[i], left, top, right, bottom)
+        draw_predict(frame, confidences[i], left, top, right, bottom, classes[class_ids[i]])
+
     return final_boxes
 
 
@@ -137,13 +121,14 @@ class FPS:
         # compute the (approximate) frames per second
         return self._num_frames / self.elapsed()
 
+
 def refined_box(left, top, width, height):
     right = left + width
     bottom = top + height
 
     original_vert_height = bottom - top
-    top = int(top + original_vert_height * 0.15)
-    bottom = int(bottom - original_vert_height * 0.05)
+    top = int(top + original_vert_height * 0.01)
+    bottom = int(bottom - original_vert_height * 0.01)
 
     margin = ((bottom - top) - (right - left)) // 2
     left = left - margin if (bottom - top - right + left) % 2 == 0 else left - margin - 1

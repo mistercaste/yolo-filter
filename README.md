@@ -1,7 +1,8 @@
-# YOLOFace
+# YOLOFilter
 
-# Deep learning based Face detection using the YOLOv3 algorithm
+# Deep learning based detection using the YOLOv3 algorithm
 
+The purpose of this fork is to provide a command line utility for general-purpose computational-vision.
 
 ## Getting started
 
@@ -27,7 +28,7 @@ OpenCV `dnn` module supports running inference on pre-trained deep learning mode
 * Matplotlib
 * Pillow
 
-Development for this project will be isolated in Python virtual environment. This allows us to experiment with different versions of dependencies.
+Development for this project will be isolated in Python virtual environment. This allows us to work with different versions of dependencies.
 
 There are many ways to install `virtual environment (virtualenv)`, see the [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/) guide for different platforms, but here are a couple:
 
@@ -41,10 +42,10 @@ $ pip install virtualenv
 $ pip install --upgrade virtualenv
 ```
 
-Create a Python 3.6 virtual environment for this project and activate the virtualenv:
+Create a Python 3.9 virtual environment for this project and activate the virtualenv:
 ```bash
-$ virtualenv -p python3.6 yoloface
-$ source ./yoloface/bin/activate
+$ virtualenv -p python3.9 yolo-filter
+$ source ./yolo-filter/bin/activate
 ```
 
 Next, install the dependencies for the this project:
@@ -56,31 +57,31 @@ $ pip install -r requirements.txt
 
 * Clone this repository
 ```bash
-$ git clone https://github.com/sthanhng/yoloface
+$ git clone https://github.com/mistercaste/yolo-filter.git
 ```
 
-* For face detection, you should download the pre-trained YOLOv3 weights file which trained on the [WIDER FACE: A Face Detection Benchmark](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/index.html) dataset from this [link](https://drive.google.com/file/d/1xYasjU52whXMLT5MtF7RCPQkV66993oR/view?usp=sharing) and place it in the `model-weights/` directory.
+* You need to download the pre-trained YOLOv3 weights file dataset from this [link](https://pjreddie.com/media/files/yolov3.weights) and place it in the `model-weights/` directory.
 
 * Run the following command:
 
 >**image input**
 ```bash
-$ python yoloface.py --image samples/outside_000001.jpg --output-dir outputs/
+$ python detect.py --image samples/interstellar.jpg
 ```
 
 >**video input**
 ```bash
-$ python yoloface.py --video samples/subway.mp4 --output-dir outputs/
+$ python detect.py --video samples/subway.mp4
 ```
 
 >**webcam**
 ```bash
-$ python yoloface.py --src 1 --output-dir outputs/
+$ python detect.py --src 1
 ```
 
 ## Sample outputs
 
-![Imgur](assets/outside_000001_yoloface.jpg)
+![Imgur](assets/interstellar.jpg)
 
 ## License
 
