@@ -1,8 +1,11 @@
 # YOLOFilter
 
-# Deep learning based detection using the YOLOv3 algorithm
+# Deep learning based detection using YOLOv3
 
 The purpose of this fork is to provide a command line utility for general-purpose computational-vision.
+Sample usages could be home video surveillance, counting users/objects, etc...
+
+Target of the fork is also to provide a filter on the objects to recognize (see cfg/classes.txt), while keep using a general purpose [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) model.
 
 ## Getting started
 
