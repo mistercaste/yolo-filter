@@ -1,11 +1,11 @@
 # YOLO-FILTER
 
-# Deep learning detection using YOLOv3
+# Deep learning detection with YOLOv3
 
 The purpose of this fork is to provide a command line utility for general-purpose computational-vision.
 Sample usages could be home video surveillance, counting users/objects, etc...
 
-Target of the fork is also to provide a filter on the objects to recognize (see cfg/classes.txt), while keep using a general purpose [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) model.
+Target of the fork is also to provide a filter on the objects to recognize (see: `cfg/classes.txt`), while using a general purpose [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) model.
 
 ## Getting started
 
@@ -29,10 +29,9 @@ Credit: [Ayoosh Kathuria](https://towardsdatascience.com/yolo-v3-object-detectio
 
 ## Python Virtual Environment
 
-* The development of this project is isolated in s `Python Virtual Environment (virtualenv)`.
+* This project is isolated in a `Python Virtual Environment (virtualenv)`.
 * This allows us to work with different versions of the dependencies.
-* For more info see the [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/).
-
+* For more information, please see [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/).
 * The setup of the virtualenv can be performed simply by executing the command below in the folder of the git clone:
 
 ```bash
@@ -41,7 +40,7 @@ $ ./kickoff.sh
 
 ## Run the filter
 
-Once the environment is setup the application can start with one of the following commands:
+Once the environment is set, the application can start with one of the following commands:
 
 >**IMAGE INPUT**
 ```bash
