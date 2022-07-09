@@ -1,6 +1,6 @@
-# YOLOFilter
+# YOLO-FILTER
 
-# Deep learning based detection using YOLOv3
+# Deep learning detection using YOLOv3
 
 The purpose of this fork is to provide a command line utility for general-purpose computational-vision.
 Sample usages could be home video surveillance, counting users/objects, etc...
@@ -17,50 +17,31 @@ The YOLOv3 (You Only Look Once) is a state-of-the-art, real-time object detectio
 
 Credit: [Ayoosh Kathuria](https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b)
 
-## OpenCV Deep Neural Networks (dnn module)
+## Python Prerequisites
 
-OpenCV `dnn` module supports running inference on pre-trained deep learning models from popular frameworks such as TensorFlow, Torch, Darknet and Caffe.
-
-## Prerequisites
-
-* Tensorflow
+* tensorflow
 * opencv-python
 * opencv-contrib-python
-* Numpy
+* numpy
 * Keras
-* Matplotlib
-* Pillow
+* matplotlib
+* pillow
 
-Development for this project will be isolated in Python virtual environment. This allows us to work with different versions of dependencies.
+## Python Virtual Environment
 
-There are many ways to install `virtual environment (virtualenv)`, see the [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/) guide for different platforms, but here are a couple:
+* The development of this project is isolated in s `Python Virtual Environment (virtualenv)`.
+* This allows us to work with different versions of the dependencies.
+* For more info see the [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/).
 
-- For Ubuntu
+* The setup of the virtualenv can be performed simply by executing the command below in the folder of the git clone:
+
 ```bash
-$ pip install virtualenv
+$ ./kickoff.sh
 ```
 
-Create a Python 3.9 virtual environment for this project and activate the virtualenv:
-```bash
-$ virtualenv -p python3.9 yolo-filter
-$ source ./yolo-filter/bin/activate
-```
+## Run the filter
 
-Next, install the dependencies for the this project:
-```bash
-$ pip install -r requirements.txt
-```
-
-## Usage
-
-* Clone this repository
-```bash
-$ git clone https://github.com/mistercaste/yolo-filter.git
-```
-
-* You need to download the pre-trained YOLOv3 weights file dataset from this [link](https://pjreddie.com/media/files/yolov3.weights) and place it in the `model-weights/` directory.
-
-* Run the following command:
+Once the environment is setup the application can start with one of the following commands:
 
 >**IMAGE INPUT**
 ```bash
@@ -77,7 +58,7 @@ $ python detect.py --video samples/subway.mp4
 $ python detect.py --src 1
 ```
 
-## Sample outputs
+## Sample output
 
 ![Imgur](assets/interstellar.jpg)
 
@@ -88,7 +69,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## References
 
 This is a fork of [Yolo FACE](https://github.com/sthanhng/yoloface);
-however some features were added by other very similar projects on the internet and some -of course- by myself. As none of these projects referenced an original fork, which I suspect exists (maybe the original YOLO author, [Joseph Chet Redmon](https://pjreddie.com/)?), I've referenced YoloFACE with the purpose of continuing from the codebase of this project.
-Might you know which project is the original fork, please contact me: I will be more than happy to update my references. Thank you!
+however some features were added by other very similar projects on the internet and some -of course- by myself. As none of these projects referenced an original fork, which I suspect exists (maybe even from the original YOLO author, [Joseph Chet Redmon](https://pjreddie.com/)?), I've referenced YoloFACE with the purpose of continuing from the codebase of this project.
+Might anyone know which project is the original fork, please contact me: I will be more than happy to update my references. Thank you.
 
-- Matt
+Matt
