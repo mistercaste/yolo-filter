@@ -39,7 +39,7 @@ print('#' * 60)
 classes = None
 with open(args.model_classes, 'rt') as file:
     classes = file.read().rstrip('\n').split('\n')
-print('Classes configured: ')
+print('Classes configured for CV recognition: ')
 print(classes)
 print('#' * 60)
 
