@@ -2,10 +2,9 @@
 
 # Deep learning detection with YOLOv3
 
-The purpose of this fork is to provide a command line utility for general-purpose computational-vision.
-Sample usages could be home video surveillance, counting users/objects, etc...
+A command line utility for general-purpose computational-vision tasks, with the possibility to filter only objects of interest as parameters (full list available in [classes.txt](https://github.com/mistercaste/yolo-filter/blob/master/cfg/classes.txt)), by using a general purpose [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) model.
 
-Target of the fork is also to provide a filter on the objects to recognize (see: `cfg/classes.txt`), while using a general purpose [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) model.
+Optimal for usage on SBC (e.g. Raspberry PI); sample usages could be home video surveillance, counting users/objects, segmentation of images, etc...
 
 ## Getting started
 
@@ -46,7 +45,7 @@ Once the environment is set, the application can start with one of the following
 
 >**IMAGE INPUT**
 ```bash
-$ python detect.py --image samples/interstellar.jpg
+$ python detect.py --image samples/interstellar_all.jpg
 ```
 
 >**VIDEO INPUT**
@@ -61,7 +60,11 @@ $ python detect.py --src 1
 
 ## Sample output
 
-![Imgur](assets/interstellar.jpg)
+![Imgur](assets/interstellar_all.jpg)
+
+When running with the parameter `--include-classes person banana` though we will filter out everything not in our list (i.e. `person` or `banana`), hence the outcome will become:
+
+![Imgur](assets/interstellar_filtered.jpg)
 
 ## License
 
