@@ -19,6 +19,8 @@ Credit: [Ayoosh Kathuria](https://towardsdatascience.com/yolo-v3-object-detectio
 
 ## Python Prerequisites
 
+* python 3 (tested on `3.6`, `3.7`, `3.8`, `3.9`)
+* pip
 * tensorflow
 * opencv-python
 * opencv-contrib-python
@@ -38,7 +40,7 @@ Credit: [Ayoosh Kathuria](https://towardsdatascience.com/yolo-v3-object-detectio
 $ ./kickoff.sh
 ```
 
-## Run the filter
+## Run
 
 Once the environment is set, the application can start with one of the following commands:
 
