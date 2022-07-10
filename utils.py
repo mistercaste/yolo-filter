@@ -80,14 +80,15 @@ def post_process(frame, outs, conf_threshold, nms_threshold, classes, excluded_c
     indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
 
     for i in indices:
-        box = boxes[i]
-        left = box[0]
-        top = box[1]
-        width = box[2]
-        height = box[3]
-        final_boxes.append(box)
-        left, top, right, bottom = refined_box(left, top, width, height)
-        draw_predict(frame, confidences[i], left, top, right, bottom, classes[class_ids[i]])
+        if excluded_classes_ids == [] or class_ids[i] in excluded_classes_ids: # Filter the parameterized choices
+            box = boxes[i]
+            left = box[0]
+            top = box[1]
+            width = box[2]
+            height = box[3]
+            final_boxes.append(box)
+            left, top, right, bottom = refined_box(left, top, width, height)
+            draw_predict(frame, confidences[i], left, top, right, bottom, classes[class_ids[i]])
 
     return final_boxes
 
