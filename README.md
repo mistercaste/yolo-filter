@@ -16,10 +16,8 @@ The YOLOv3 (You Only Look Once) is a state-of-the-art, real-time object detectio
 
 Credit: [Ayoosh Kathuria](https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b)
 
-## Python Prerequisites
+## Python 3 Prerequisites
 
-* python 3 (tested on `3.6`, `3.7`, `3.8`, `3.9`)
-* pip
 * tensorflow
 * opencv-python
 * opencv-contrib-python
@@ -72,8 +70,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## References
 
-This is a fork of [Yolo FACE](https://github.com/sthanhng/yoloface);
-however some features were added by other very similar projects on the internet and some -of course- by myself. As none of these projects referenced an original fork, which I suspect exists (maybe even from the original YOLO author, [Joseph Chet Redmon](https://pjreddie.com/)?), I've referenced YoloFACE with the purpose of continuing from the codebase of this project.
-Might anyone know which project is the original fork, please contact me: I will be more than happy to update my references. Thank you.
+This is a fork of [Yolo FACE](https://github.com/sthanhng/yoloface),
+however some code-features were added by other similar projects, possibly all forked by a common super-project.
+
+I couldn't find in any project a reference to the super-project, hence -might you know it- please contact me so that I can update this section and the fork too. Thank you.
 
 Matt
