@@ -18,6 +18,8 @@ parser.add_argument('--src', type=int, default=0,
                     help='source of the camera')
 parser.add_argument('--output-dir', type=str, default='outputs/',
                     help='path to the output directory')
+parser.add_argument('--visualize', action='store_true', default=False,
+                    help='If set visualizes the currently processed image in a GUI window')
 parser.add_argument('--model-classes', type=str, default='cfg/classes.txt',
                     help='the list of classes')
 parser.add_argument("--include-classes", nargs="+", default=[],
@@ -33,6 +35,7 @@ print('[i] The classes of model file: ', args.model_classes)
 print('[i] The classes to filter ([]=no filter): ', args.include_classes)
 print('[i] Path to image file: ', args.image)
 print('[i] Path to video file: ', args.video)
+print('[i] Open GUI window while processing: ', args.visualize)
 print('#' * 60)
 
 # Define classes from file
@@ -63,7 +66,8 @@ net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 def _main():
     wind_name = 'Detection using YOLOv3'
-    cv2.namedWindow(wind_name, cv2.WINDOW_NORMAL)
+    if args.visualize:
+        cv2.namedWindow(wind_name, cv2.WINDOW_NORMAL)
 
     output_file = ''
 
@@ -135,7 +139,8 @@ def _main():
         else:
             video_writer.write(frame.astype(np.uint8))
 
-        cv2.imshow(wind_name, frame)
+        if args.visualize:
+            cv2.imshow(wind_name, frame)
 
         key = cv2.waitKey(1)
         if key == 27 or key == ord('q'):
